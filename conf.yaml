@@ -1,0 +1,20 @@
+--- 
+test: "Configuration loaded successfully"
+#Cache Configuration
+cacheSize: 1000000
+
+#Weigh Configuration
+shuffle: 10
+
+#stepFactor Configuration
+stepFactor: 1
+raiseStep: 100
+maxStep: 8
+
+#Moves Propability Configuration
+changePeriods: 10
+moveExam: 30
+exchangeExams: 25
+massChangePeriods: 5 
+massExodus: 5
+massMigration: 5
