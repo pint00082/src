@@ -1,37 +1,20 @@
-## Welcome to GitHub Pages
+# An effort on the Uncapacitated Exam Timetabling Problem in Golang
+This is part of a semester project for the University of Ioannina
 
-You can use the [editor on GitHub](https://github.com/pint00082/src/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+## Highlights
++ Graph coloring based on the Smallest-Degree-Last algorithm in parallel
++ Late acceptance Hill-Climbing with groups of climbers in parallel
++ An Arc Cache to speedup the fitness calculation
++ Easy yaml Configuration
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Install Instructions
+### Windows
+1. Download https://github.com/pint00082/src/blob/master/precompiled/uett.zip
+2. Unzip
+3. Run uett.exe
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/pint00082/src/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## Run Instructions
++ You can change the configuration yaml file to alter the programs behaviour.
++ Datasets to solve must be located under the datasets/problems folder
++ Solutions for evaluation must be located under the datasets/solutions folder
++ Generated solutions are saved in the datasets/savedSolutions folder
