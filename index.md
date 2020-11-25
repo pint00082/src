@@ -9,7 +9,7 @@ This is part of a semester project for the University of Ioannina
 
 ## Install Instructions
 ### Windows
-1. Download https://github.com/pint00082/src/blob/master/precompiled/uett.zip
+1. Download [[https://github.com/pint00082/src/blob/master/precompiled/uett.zip]]
 2. Unzip
 3. Run uett.exe
 
