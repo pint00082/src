@@ -76,7 +76,7 @@ func climbHill(load *models.Loaded, weight []models.Weight, currentSolution mode
 			currentSolution = workerResults[minPos]
 			//steps = load.Conf.StepFactor
 			unchangedCounter = 0
-			fmt.Println(currentSolution.Score)
+			//fmt.Println(currentSolution.Score)
 		} else {
 			unchangedCounter++
 		}
@@ -89,7 +89,6 @@ func climbHill(load *models.Loaded, weight []models.Weight, currentSolution mode
 			stuck++
 			//keepCurrentSolution and restart if maximum steps are reached and there has been no change for conf.Restart times
 			if stuck == load.Conf.Restart {
-				fmt.Println("here")
 				contestants = append(contestants, currentSolution)
 				steps = load.Conf.StepFactor
 				unchangedCounter = 0
