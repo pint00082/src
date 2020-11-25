@@ -1,15 +1,18 @@
 --- 
 test: "Configuration loaded successfully"
 #Cache Configuration
-cacheSize: 1000000
+cacheSize: 2000000
 
 #Weigh Configuration
 shuffle: 10
 
 #stepFactor Configuration
 stepFactor: 1
-raiseStep: 100
-maxStep: 8
+raiseStep: 1000
+maxSteps: 10
+
+#restart Configuration
+restart: 100000
 
 #Moves Propability Configuration
 changePeriods: 10

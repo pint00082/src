@@ -16,6 +16,7 @@ type Configuration struct {
 	MassMigration     int    `yaml:"massMigration"`
 	CacheSize         int    `yaml:"cacheSize"`
 	MaxSteps          int    `yaml:"maxSteps"`
+	Restart           int    `yaml:"restart"`
 }
 
 //Loaded keeps the current problem, solution or both for easy reference

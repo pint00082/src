@@ -28,20 +28,21 @@ func SolveProblem(load *models.Loaded, seconds int) {
 	currentSolution.Score = climber.FindCost(currentSolution.Solution, load)
 
 	//begin HillClimbing
-	climbHill(load, currentSolution, finishTime)
+	climbHill(load, weight, currentSolution, finishTime)
 }
 
-func climbHill(load *models.Loaded, currentSolution models.Solution, finishTime time.Time) {
+func climbHill(load *models.Loaded, weight []models.Weight, currentSolution models.Solution, finishTime time.Time) {
 	maxProcs := runtime.GOMAXPROCS(0) + runtime.GOMAXPROCS(0)/4
 	var wg sync.WaitGroup
 	workerSolutionChan := make(chan models.Solution, maxProcs)
+	defer close(workerSolutionChan)
 	var steps int
 	steps = load.Conf.StepFactor
 	var raiseStepAfter int
 	raiseStepAfter = load.Conf.StepFactor
-	var unchangedCounter int
-	unchangedCounter = 0
-	defer close(workerSolutionChan)
+	unchangedCounter := 0
+	stuck := 0
+	contestants := []models.Solution{}
 
 	//main Loop
 	for time.Now().Before(finishTime) {
@@ -72,11 +73,10 @@ func climbHill(load *models.Loaded, currentSolution models.Solution, finishTime 
 		}
 		//if workers found a better solution keep it as the current best, resets the step factor and unchangedCounter
 		if bestSolution < currentSolution.Score {
-			fmt.Println(bestSolution)
 			currentSolution = workerResults[minPos]
-
 			steps = load.Conf.StepFactor
 			unchangedCounter = 0
+			fmt.Println(currentSolution.Score)
 		} else {
 			unchangedCounter++
 		}
@@ -85,6 +85,33 @@ func climbHill(load *models.Loaded, currentSolution models.Solution, finishTime 
 			steps++
 			unchangedCounter = 0
 		}
+		if steps >= load.Conf.MaxSteps && unchangedCounter >= raiseStepAfter {
+			stuck++
+			//keepCurrentSolution and restart if maximum steps are reached and there has been no change for conf.Restart times
+			if stuck == load.Conf.Restart {
+				fmt.Println("here")
+				contestants = append(contestants, currentSolution)
+				steps = load.Conf.StepFactor
+				unchangedCounter = 0
+				stuck = 0
+				currentSolution.Solution = newclimber.NewClimber(load, weight)
+				currentSolution.Score = climber.FindCost(currentSolution.Solution, load)
+			}
+		}
+	}
+
+	//find the best solution in the final contestants
+	if len(contestants) > 0 {
+		var minPos int
+		minPos = 0
+		bestSolution := contestants[0].Score
+		for k, v := range contestants {
+			if v.Score < bestSolution {
+				minPos = k
+				bestSolution = v.Score
+			}
+		}
+		currentSolution = contestants[minPos]
 	}
 	//report and save solution
 	//TODO
