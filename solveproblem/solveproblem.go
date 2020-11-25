@@ -74,7 +74,7 @@ func climbHill(load *models.Loaded, weight []models.Weight, currentSolution mode
 		//if workers found a better solution keep it as the current best, resets the step factor and unchangedCounter
 		if bestSolution < currentSolution.Score {
 			currentSolution = workerResults[minPos]
-			steps = load.Conf.StepFactor
+			//steps = load.Conf.StepFactor
 			unchangedCounter = 0
 			fmt.Println(currentSolution.Score)
 		} else {
