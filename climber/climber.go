@@ -6,6 +6,7 @@ import (
 	"math/rand"
 	"models"
 	"move"
+	"sort"
 	"sync"
 	"time"
 )
@@ -39,6 +40,9 @@ func Climbing(load *models.Loaded, stepFactor int, currentSolution models.Soluti
 	}
 	workerSolution := models.Solution{}
 	workerSolution.Solution = climber
+	for _, v := range workerSolution.Solution {
+		sort.Ints(v)
+	}
 	workerSolution.Score = CalculateCostWCache(climber, load)
 	workerSolutionChan <- workerSolution
 }
