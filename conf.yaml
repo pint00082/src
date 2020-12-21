@@ -1,7 +1,7 @@
 --- 
 test: "Configuration loaded successfully"
 #Cache Configuration
-cacheSize: 2000000
+cacheSize: 4000000
 
 #Weight Configuration
 shuffle: 5
@@ -9,5 +9,5 @@ maxShuffle: 15
 raiseShuffleFactor: 1000
 
 #kempe Configuration
-kempe: 0
+kempe: 10
 
