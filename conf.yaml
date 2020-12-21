@@ -3,21 +3,11 @@ test: "Configuration loaded successfully"
 #Cache Configuration
 cacheSize: 2000000
 
-#Weigh Configuration
-shuffle: 10
+#Weight Configuration
+shuffle: 5
+maxShuffle: 15
+raiseShuffleFactor: 1000
 
-#stepFactor Configuration
-stepFactor: 1
-raiseStep: 1000
-maxSteps: 10
+#kempe Configuration
+kempe: 0
 
-#restart Configuration
-restart: 100000
-
-#Moves Propability Configuration
-changePeriods: 10
-moveExam: 30
-exchangeExams: 25
-massChangePeriods: 5 
-massExodus: 5
-massMigration: 5

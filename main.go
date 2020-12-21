@@ -16,7 +16,6 @@ import (
 func main() {
 	load := newLoad()
 	configuration.ReadConfiguration(&load.Conf)
-	propabilityDistribution(load)
 	//Grab Memory for Cache
 	cache, err := lru.NewARC(load.Conf.CacheSize)
 	if err != nil {
@@ -86,24 +85,4 @@ func newLoad() *models.Loaded {
 	l.SimoultaneousPairs = make(map[models.Pairs]int)
 
 	return &l
-}
-
-func propabilityDistribution(load *models.Loaded) {
-	//Distribute move propability
-	movesDist := models.MovesDistribution{}
-	sum := 0
-	movesDist.ChangePeriods = load.Conf.ChangePeriods
-	sum += movesDist.ChangePeriods
-	movesDist.MoveExam = sum + load.Conf.MoveExam
-	sum += movesDist.MoveExam
-	movesDist.ExchangeExams = sum + load.Conf.ExchangeExams
-	sum += movesDist.ExchangeExams
-	movesDist.MassChangePeriods = sum + load.Conf.MassChangePeriods
-	sum += movesDist.MassChangePeriods
-	movesDist.MassExodus = sum + load.Conf.MassExodus
-	sum += movesDist.MassExodus
-	movesDist.MassMigration = sum + load.Conf.MassMigration
-	sum += movesDist.MassMigration
-	movesDist.PossibilitySum = sum
-	load.MovesDist = movesDist
 }

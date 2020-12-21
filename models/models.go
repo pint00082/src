@@ -4,19 +4,12 @@ import lru "github.com/hashicorp/golang-lru"
 
 //Configuration struct stores all the settings imported at the start
 type Configuration struct {
-	Test              string `yaml:"test"`
-	Shuffle           int    `yaml:"shuffle"`
-	StepFactor        int    `yaml:"stepFactor"`
-	RaiseStep         int    `yaml:"raiseStep"`
-	ChangePeriods     int    `yaml:"changePeriods"`
-	MassChangePeriods int    `yaml:"massChangePeriods"`
-	MoveExam          int    `yaml:"moveExam"`
-	ExchangeExams     int    `yaml:"exchangeExams"`
-	MassExodus        int    `yaml:"massExodus"`
-	MassMigration     int    `yaml:"massMigration"`
-	CacheSize         int    `yaml:"cacheSize"`
-	MaxSteps          int    `yaml:"maxSteps"`
-	Restart           int    `yaml:"restart"`
+	Test               string `yaml:"test"`
+	Shuffle            int    `yaml:"shuffle"`
+	MaxShuffle         int    `yaml:"maxShuffle"`
+	RaiseShuffleFactor int    `yaml:"raiseShuffleFactor"`
+	CacheSize          int    `yaml:"cacheSize"`
+	Kempe              int    `yaml:"kempe"`
 }
 
 //Loaded keeps the current problem, solution or both for easy reference
@@ -29,19 +22,7 @@ type Loaded struct {
 	SimoultaneousPairs map[Pairs]int
 	GraphNodes         map[int]map[int]int
 	Conf               Configuration
-	MovesDist          MovesDistribution
 	Cache              *lru.ARCCache
-}
-
-//MovesDistribution struct
-type MovesDistribution struct {
-	PossibilitySum    int
-	ChangePeriods     int
-	MoveExam          int
-	ExchangeExams     int
-	MassChangePeriods int
-	MassExodus        int
-	MassMigration     int
 }
 
 //Pairs struct

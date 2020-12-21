@@ -1,0 +1,15 @@
+bak
+car-f-92(4.72).sol
+car-s-91(5.93).sol
+ear-f-83(34.54).sol
+filenames.txt
+hec-s-92(10.64).sol
+kfu-s-93(13.83).sol
+lse-f-91(11.10).sol
+pur-s-93(7.03).sol
+rye-s-93(8.97).sol
+sta-f-83(157.04).sol
+tre-s-92(8.55).sol
+uta-s-92(3.87).sol
+ute-s-92(25.14).sol
+yor-f-83(36.69).sol

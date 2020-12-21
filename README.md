@@ -3,7 +3,7 @@ This is part of a semester project for the University of Ioannina
 
 ## Highlights
 + Graph coloring based on the Smallest-Degree-Last algorithm in parallel
-+ Late acceptance Hill-Climbing with groups of climbers in parallel
++ Parallel simulated Annealing
 + An Arc Cache to speedup the fitness calculation
 + Easy yaml Configuration
 

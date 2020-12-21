@@ -166,5 +166,5 @@ func FindCostFactor(x int, y int) int {
 	case 5:
 		return 1
 	}
-	return -1
+	return 0
 }
