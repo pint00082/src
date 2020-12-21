@@ -50,8 +50,25 @@ func generateCandidates(solution models.Solution, remainingThermalPeriods int, r
 	//perform the exchange
 	newCandidate := models.Solution{}
 	newCandidate.Solution = [][]int{}
-	for i := 0; i < maxPeriod; i++ {
-		newCandidate.Solution = append(newCandidate.Solution, currentSolution.Solution[moveSequence[i]])
+
+	lengthFirst := len(currentSolution.Solution[0])
+	lengthLast := len(currentSolution.Solution[maxPeriod-1])
+
+	reverse := false
+	if lengthFirst != 0 && lengthLast != 0 {
+		if currentSolution.Solution[0][0] > currentSolution.Solution[maxPeriod-1][0] {
+			reverse = true
+		}
+	}
+
+	if reverse == true {
+		for i := maxPeriod - 1; i >= 0; i-- {
+			newCandidate.Solution = append(newCandidate.Solution, currentSolution.Solution[moveSequence[i]])
+		}
+	} else {
+		for i := 0; i < maxPeriod; i++ {
+			newCandidate.Solution = append(newCandidate.Solution, currentSolution.Solution[moveSequence[i]])
+		}
 	}
 	newCandidate.Score = caching.CalculateCostWCache(newCandidate.Solution, load)
 	candidateSolutions[w] = newCandidate
